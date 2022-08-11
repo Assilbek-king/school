@@ -1,0 +1,60 @@
+{% extends 'basemain.html' %}
+    {% block content %}
+        {% load static %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+        {% for so in sinflar_obj %}
+
+        <div class="row">
+        <div class="mt-2 mb-2" style="font-weight:600;color: #fda638;font-size:20px">Расписание: {{ so.sinf }}</div>
+          <div class="col-sm-12">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col " class="" style="color:#5d50c6;text-decoration:none;font-weight:700">Время</th>
+                        {% for w in weeks %}
+                      <th scope="col " class="" style="color:#5d50c6;text-decoration:none;font-weight:700"  >{{ w.title }}</th>
+                        {% endfor %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in so.new_lesson_times_items %}
+                    <tr>
+                      <td scope="row" style="color:#5d50c6;text-decoration:none;font-weight:600">
+                            {{ t }}
+                      </td>
+                      {% for week in weeks %}
+
+                        <td scope="row">
+                           {% for k, v in so.new_lesson_times.items %}
+                                {% if t == k %}
+                                    {% for vv in v %}
+                                        {% if vv.week_day.id == week.id %}
+                                            {% if vv.lesson_id.subject %}
+                                                {{ vv.lesson_id.subject }}
+                                            {% else %}
+                                                {{ vv.lesson_id.title }}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                           {% endfor %}
+                        </td>
+                        {% endfor %}
+
+
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                  </tbody>
+              </table>
+
+          </div>
+        </div>
+        {% endfor %}
+
+    </main>
+{% endblock %}

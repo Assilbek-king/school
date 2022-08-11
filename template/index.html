@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+    {% block content %}
+        {% load static %}
+
+
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image:url(/static/images/AHR_8697.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            <h1 class="mb-4">Дети - лучшие <span> исследователи в мире</span></h1>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image:url(/static/images/bg_2.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 text-center ftco-animate">
+            <h1 class="mb-4">Лучшее образование<span>  для ваших детей</span></h1>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-services ftco-no-pb">
+			<div class="container-wrap">
+				<div class="row no-gutters">
+					{% for b in blog %}
+          <div class="col-md-3 d-flex services align-self-stretch pb-4 px-4 ftco-animate {{ b.color }}">
+            <div class="media block-6 d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="{{ b.icon }}"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">{{ b.title }}</h3>
+                <p>{{ b.description }}</p>
+              </div>
+            </div>      
+          </div>
+					{% endfor%}
+        </div>
+			</div>
+		</section>
+		
+		<section class="ftco-section ftco-no-pt ftc-no-pb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 order-md-last wrap-about py-5 wrap-about bg-light">
+						<div class="text px-4 ftco-animate">
+	          	<h2 class="mb-4">Информация о приема</h2>
+							<p>Уважаемые родители!!!</p>
+							<p> Прием в 1 класс 2022-2023 учебного года проводится с 1 апреля по 1 августа 2021 года. С 1 апреля родители будущих первоклашек могут подавать заявление в школу.
+  Приём документов осуществляется на основании стандарта государственной услуги «Прием документов и зачисление в организации образования независимо от ведомственной  подчиненности для обучения по общеобразовательным программам начального, основного среднего, общего среднего образования»
+ </p>
+							<p>Поступление в школу – это начало нового этапа в жизни ребенка, вхождение его в мир знаний, новых прав и обязанностей, сложных и разнообразных взаимоотношений со взрослыми и сверстниками.
+            У вас Событие – ваш ребенок впервые переступает порог школы. Как он будет успевать в школе, понравится ли ему быть учеником, как сложатся взаимоотношения с учителем, одноклассниками? Эти тревоги одолевают всех родителей, даже если в школу идет уже второй, третий или пятый ребенок.</p>
+						<p>
+							  Это естественно, поскольку каждый маленький человек неповторим, у него свой внутренний мир, свои интересы, свои способности и возможности. И главная задача родителей совместно с педагогами – так организовать обучение, чтобы ребенок с удовольствием посещал школу, познавал окружающий мир и, конечно, хорошо учился.
+
+						</p>
+							<p>
+								Как должны себя вести взрослые, чтобы добиться этого? Необходима «кровная» заинтересованность в успехах, в школьных делах маленького ученика. Он должен чувствовать, что родителям, дедушкам и бабушкам очень важно и интересно знать, что происходило в школе, что нового (по каждому предмету в отдельности) узнал он сегодня.
+							</p>
+							<p>
+								Желательно поддерживать интерес к учебе, перенося новые знания ребенка на повседневную жизнь (использовать навык счета, чтобы посчитать, сколько птиц село на ветку или сколько красных машин стоит у дома, навык чтения – чтобы прочитать вывеску или название новой книжки, купленной мамой).
+
+            У каждой личности должно быть свое пространство. Если у ребенка нет своей комнаты, нужно организовать рабочее место: письменный стол, где он будет заниматься своим серьезным делом – учиться. Это хорошо и с точки зрения соблюдения правил гигиены – правильная посадка, позволяющая сохранить осанку, необходимое освещение.
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="ftco-intro" style="background-image: url(/static/images/AHR_8712.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>КГУ "Сайрамская вспомогательная школа-интернат" управления образования г.Шымкент</h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+		<section class="ftco-section ftco-no-pb">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4"><span>Лучшие</span>  Учителя</h2>
+            <p>Индивидуальный подход — это организация воспитательно-образовательного процесса на основе всестороннего учете индивидуальных особенностей каждого конкретного ребенка.</p>
+          </div>
+        </div>	
+				<div class="row">
+					{% for t in teacher %}
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(/media/{{ t.logo }});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3>{{ t.first_name }} {{ t.last_name }}</h3>
+								<span class="position mb-2">{{ t.info }}</span>
+								<div class="faded">
+
+	              			</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+<!--            <h2 class="mb-4"><span>Открытый</span> Урок</h2>-->
+            <p></p>
+          </div>
+        </div>	
+				<div class="row">
+					{% for s in sabaq %}
+					<div class="col-md-6 course d-lg-flex ftco-animate">
+						<div class="img" style="background-image: url(/media/{{ s.logo }});"></div>
+						<div class="text bg-light p-4">
+							<h3><a href="#">{{ s.title }}</a></h3>
+							<p class="subheading"><span>Класс: {{ s.klass }}</span> </p>
+							<p>{{ s.info }}</p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/static/images/bg_4.jpg);" data-stellar-background-ratio="0.5">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section heading-section-black ftco-animate">
+            <h2 class="mb-4"><span>Более 40</span> Более 40 лет работы</h2>
+            <p>1975 год - открытие школы <br>
+			2021 год - открытие новых корпусов со всеми удобствами, техникой, и все требование к современной <br>
+				школе и для развитие наших детей.</p>
+          </div>
+        </div>	
+    		<div class="row d-md-flex align-items-center justify-content-center">
+    			<div class="col-lg-10">
+    				<div class="row d-md-flex align-items-center">
+						{% for c in calc %}
+		          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		            	<div class="icon"><span class="flaticon-doctor"></span></div>
+		              <div class="text">
+		                <strong class="number" data-number="{{ c.count }}">0</strong>
+		                <span>{{ c.info }}</span>
+		              </div>
+		            </div>
+		          </div>
+						{% endfor %}
+	          </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+
+
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4"><span>Последние</span> Новости</h2>
+            <p> </p>
+          </div>
+        </div>
+				<div class="row">
+					{% for p in post %}
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+              <a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url('/media/{{ p.logo }}');">
+								<div class="meta-date text-center p-2">
+                  <span class="day">{{ p.pub_date.day }}</span>
+                  <span class="mos">{{ p.pub_date.month}}</span>
+                  <span class="yr">{{ p.pub_date.year }}</span>
+                </div>
+              </a>
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="#">{{ p.title }}</a></h3>
+                <p>{{ p.mini_description }}</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="/{{ p.id }}" class="btn btn-secondary">Подробнее <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">{{ p.author }}</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+					{% endfor %}
+        </div>
+			</div>
+		</section>
+
+<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4"><span>Галерея</span></h2>
+            <p> </p>
+          </div>
+        </div>
+		<section class="ftco-gallery">
+    	<div class="container-wrap">
+    		<div class="row no-gutters">
+				{% for g in gallery %}
+					<div class="col-md-3 ftco-animate">
+						<a href="/media/{{ g.logo }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url(/media/{{ g.logo }}">
+							<div class="icon mb-4 d-flex align-items-center justify-content-center">
+    						<span class="icon-instagram"></span>
+    					</div>
+						</a>
+					</div>
+				{% endfor %}
+        </div>
+    	</div>
+    </section>
+
+{% endblock %}

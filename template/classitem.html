@@ -1,0 +1,149 @@
+{% extends 'basemain.html' %}
+    {% block content %}
+        {% load static %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"  style="color:#5d50c6; font-weight: 600;">{{ sinf.stage }} -  {{ sinf.symbol }}</h1>
+<!--        <div class="btn-toolbar mb-2 mb-md-0">-->
+<!--          <div class="btn-group me-2">-->
+<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
+<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+<!--          </div>-->
+<!--          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+<!--            <span data-feather="calendar"></span>-->
+<!--            This week-->
+<!--          </button>-->
+<!--        </div>-->
+      </div>
+
+ <div class="container row">
+
+
+
+    <div class="row">
+        <div class="mt-2 mb-2" style="font-weight:600;color: #fda638;font-size:20px" >Список студентов:</div>
+          <div class="col-sm-5">
+          <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col " class=""  style="color: #000;">Id</th>
+      <th scope="col " class=""  style="color: #000;">ФИО</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for st in students %}
+    <tr>
+      <td scope="row">{{ st.id }}</td>
+      <td><a href="/main/student/{{ st.id }}" style="color:#5d50c6;text-decoration:none;font-weight:600"> {{ st.last_name }} {{ st.first_name }} {% if st.middle_name %} {{ st.middle_name }} {% endif %}</a></td>
+    </tr>
+  {% endfor %}
+
+
+  </tbody>
+  </table>
+    </div>
+        <div class="col-sm-7">
+          <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col " class="">Должность / ФИО</th>
+      <th scope="col " class="">Номер</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>Руководитель : <a href="/main/prepod/{{ sinf.leader.id }}"  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.leader.last_name }} {{ sinf.leader.first_name }} </a></td>
+        <td  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.leader.number }}</td>
+    </tr>
+
+    <tr>
+      <td>Воспитатель 1 : <a href="/main/prepod/{{ sinf.tar1.id }}"  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.tar1.last_name }} {{ sinf.tar1.first_name }} </a></td>
+        <td  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.tar1.number }}</td>
+    </tr>
+
+    <tr>
+      <td>Воспитатель 2 : <a href="/main/prepod/{{ sinf.tar2.id }}"  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.tar2.last_name }} {{ sinf.tar2.first_name }} </a></td>
+        <td  style="color:#5d50c6;text-decoration:none;font-weight:600">{{ sinf.tar2.number }}</td>
+    </tr>
+
+
+  </tbody>
+  </table>
+    </div>
+
+        <div class="row">
+        <div class="mt-2 mb-2"  style="font-weight:600;color: #fda638;font-size:20px">Расписания:</div>
+          <div class="col-sm-12">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col " class=""   style="color:#5d50c6;text-decoration:none;font-weight:600">Время</th>
+                        {% for w in weeks %}
+                      <th scope="col " class=""   style="color:#5d50c6;text-decoration:none;font-weight:600">{{ w.title }}</th>
+                        {% endfor %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for t in new_lesson_times_items %}
+                    <tr>
+                      <td scope="row"   style="color:#5d50c6;text-decoration:none;font-weight:600;vertical-align:middle">
+                            {{ t }}
+                      </td>
+                      {% for week in weeks %}
+                        <td scope="row">
+
+                           {% for k, v in new_lesson_times.items %}
+                                {% if t == k %}
+                                    {% for vv in v %}
+
+                                        {% if vv.week_day.id == week.id %}
+                                            {% if vv.lesson_id.subject %}
+                                                {% for l in lesid %}
+                                                {% if l.id == vv.id %}
+
+                                                    {{ vv.lesson_id.subject }} <br>
+                                                    <a href="/main/prepod/{{ l.lesson_id.teacher.id }}"  style="text-decoration:none;font-size: 12px;color:#5d50c6;">{{ l.lesson_id.teacher.last_name }} {{ l.lesson_id.teacher.first_name }}</a>
+                                                    <br><span  style="text-decoration:none;font-size: 12px;color:#5d50c6;">{{ l.lesson_id.cabinet }}</span>
+                                                {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                {% for l in lesid %}
+                                                {% if l.id == vv.id %}
+                                                    {{ vv.lesson_id.title }} <br>
+                                                    <a href="/main/prepod/{{ l.lesson_id.teacher.id }}" style="text-decoration:none;font-size: 12p;color:#5d50c6;">{{ l.lesson_id.teacher.last_name }} {{ l.lesson_id.teacher.first_name }}</a>
+                                                    <br><span  style="text-decoration:none;font-size: 12px;color:#5d50c6;">{{ l.lesson_id.cabinet }}</span>
+                                                {% endif %}
+                                                {% endfor %}
+
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                           {% endfor %}
+                        </td>
+                        {% endfor %}
+
+
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                  </tbody>
+              </table>
+
+          </div>
+        </div>
+
+
+
+</div>
+
+ </div>   
+
+
+</main>
+
+{% endblock %}

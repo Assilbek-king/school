@@ -1,0 +1,47 @@
+{% extends 'basemain.html' %}
+    {% block content %}
+        {% load static %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2" style="color:#5d50c6; font-weight: 600;">Классы</h1>
+<!--        <div class="btn-toolbar mb-2 mb-md-0">-->
+<!--          <div class="btn-group me-2">-->
+<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
+<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+<!--          </div>-->
+<!--          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+<!--            <span data-feather="calendar"></span>-->
+<!--            This week-->
+<!--          </button>-->
+<!--        </div>-->
+      </div>
+
+ <div class="container">
+  <div class="row ">
+      <style>
+            .asd {
+                background: #5d50c6;
+                font-size: 15px;
+                }
+            .asd:hover{
+                background:#1eaaf1;}
+        </style>
+      {% for s in stages %}
+    <div class="col-md-1 align-center">
+
+<!--      <h4 class="text-primary">{{ s }}-<small style="font-size:18px">класс</small></h4>-->
+        {% for s1 in sinfs %}
+        {% if s1.stage == s %}
+
+      <a class="btn asd mt-4" style="color:white;border-radius:0; padding: 12px 24px;" href="/main/class/{{ s1.id }}">{{ s1.stage }}-{{ s1.symbol }}</a>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+      {% endfor %}
+
+  </div>
+ </div>
+
+    </main>
+{% endblock %}

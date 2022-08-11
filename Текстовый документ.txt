@@ -1,0 +1,9 @@
+bg-tertiary
+	flaticon-reading
+bg-fifth
+	flaticon-books
+bg-quarternary
+	flaticon-diploma
+
+
+87025133485

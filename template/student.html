@@ -1,0 +1,184 @@
+{% extends 'basemain.html' %}
+    {% block content %}
+        {% load static %}
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2" style="color:#5d50c6; font-weight: 600;">Ученики</h1>
+        <form method="get" action="/main/student" class=" d-flex " style="justify-content:end; width:100%">
+
+          <div style="margin-left:40px">
+          <label style="    color: #fda638;font-weight: 600;">Диагностика</label>
+          <select name="diagnoz"  class="js-changes" style="padding: 3px 22px;color:#5d50c6;border:1px solid #5d50c6;">
+            <option value="0">Все</option>
+            {% for d in diagnozs %}
+
+            <option  value="{{ d.id }}" {% if diagnoz == d.id %} selected {% endif %}> {{ d.title }}</option>
+
+            {% endfor %}
+
+          </select>
+          </div>
+
+          <div style="margin-left:40px">
+          <label style="    color: #fda638;font-weight: 600;">Класс</label>
+          <select name="stage"  class="js-changes js-stage" style="padding: 3px 22px;color:#5d50c6;border:1px solid #5d50c6;">
+            <option value="0">Все</option>
+            {% for st in a %}
+
+            <option  value="{{ st }}" {% if stage == st %} selected {% endif %}> {{ st }}</option>
+
+            {% endfor %}
+
+          </select>
+          </div>
+
+          <div style="margin-left:40px">
+                      <label style=" color: #fda638;font-weight: 600;">Параллель</label>
+
+          <select name="symbol" class="js-changes js-sym" {% if not stage %} disabled="disabled" {% endif %} style="    padding: 3px 22px;color:#5d50c6;border:1px solid #5d50c6;">
+            <option value="">Все</option>
+            {% for st in new_symbols %}
+            <option value="{{ st }}"  {% if symbol == st %} selected {% endif %}> {{ st }}</option>
+            {% endfor %}
+          </select>
+          </div>
+
+          <div style="margin-left:40px">
+          <label  style="    color: #fda638;font-weight: 600;">Статус :</label>
+          <select name="status" class="js-changes" style="   padding: 3px 22px;color:#5d50c6;border:1px solid #5d50c6;">
+            <option value="-1">Все</option>
+            <option value="0" {% if status == 0 %} selected {% endif %}>В школе</option>
+            <option value="1" {% if status == 1 %} selected {% endif %}>Дома</option>
+          </select>
+          </div>
+        </form>
+<!--        <div class="row js-products-filters" >-->
+<!--                <form class="input-group mt-3 col-sm-4">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <label class="input-group-text" for="inputGroupSelect01">Sinf</label>-->
+<!--                    </div>-->
+<!--                  <select class="custom-select js-filter-marka" name="sinf_id" id="inputGroupSelect01">-->
+<!--                    <option value="">Выберите марка</option>-->
+<!--                    {% for s in stages %}-->
+<!--                         <option value="{{ s }}" >{{ s }}</option>-->
+<!--                    {% endfor %}-->
+<!--                  </select>-->
+<!--                </form>-->
+<!--                <div class="input-group mt-3 col-sm-4">-->
+<!--                    <div class="input-group-prepend">-->
+<!--                        <label class="input-group-text" for="inputGroupSelect01">Модель</label>-->
+<!--                    </div>-->
+<!--                  <select class="custom-select js-filter-model" name="model_id" id="inputGroupSelect01">-->
+<!--                    <option value="">Выберите модель</option>-->
+
+<!--                  </select>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+<!--&lt;!&ndash;        <div class="btn-toolbar mb-2 mb-md-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="btn-group me-2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span data-feather="calendar"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;            This week&ndash;&gt;-->
+<!--&lt;!&ndash;          </button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+
+      <table class="table table-bordered">
+  <thead>
+    <tr style="text-align:center">
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">ID</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">Фамилия</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">Имя</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">ИИН</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">Класс</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">Диагноз</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700">Фото</th>
+      <th scope="col " class=""  style="color:#5d50c6;text-decoration:none;font-weight:700"></th>
+    </tr>
+  </thead>
+  <tbody>
+<!--     <tr>
+      <th scope="row">1</th>
+      <td>
+        <div class="input-group mb-3">
+              <input type="text" class="form-control js-input" name="title" placeholder="" aria-label="" aria-describedby="basic-addon1" value="">
+        </div>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+              <select class="form-select" aria-label="Default select example">
+                <option selected="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+              <input type="text" class="form-control js-input" name="title" placeholder="" aria-label="" aria-describedby="basic-addon1" value="">
+        </div>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+              <input type="text" class="form-control js-input" name="title" placeholder="" aria-label="" aria-describedby="basic-addon1" value="">
+        </div>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+              <select class="form-select" aria-label="Default select example">
+                <option selected="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group mb-3">
+              <select class="form-select" aria-label="Default select example">
+                <option selected="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+        </div>
+      </td>
+      <td></td>
+    </tr>
+ -->
+{% for st in students %}
+    <tr style="vertical-align:middle;">
+      <th scope="row" style="text-align:center">{{ st.id }}</th>
+      <td >{{ st.last_name }}</td>
+      <td>{{ st.first_name }}</td>
+      <td>{{ st.iin }}</td>
+      <td>{{ st.sinf.stage }} {{ st.sinf.symbol }}</td>
+      <td>{{ st.diagnoz.title }}</td>
+      <td style="width:120px"><img src="/media/{{ st.photo }}" width="100px" height="100px" style="object-fit:cover;border-radius:50%;border: 1px solid;"></td>
+
+      <td style="text-align:center"><a href="/main/student/{{ st.id }}"><img src="/static/images/eye.svg"></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+    </main>
+<script src="/static/js/min.js"></script>
+<script>
+
+  $('.js-changes').change(function(){
+      $(this).parents('form').submit();
+  })
+
+
+
+</script>
+{% endblock %}
+

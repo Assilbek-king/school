@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Dashboard Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="/static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+
+<header class="navbar navbar-dark sticky-top  flex-md-nowrap p-0 shadow" style="background:#1eaaf1">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/main"><img src="/static/images/logo.jpeg" style="border-radius:50%" width="40" height="40"> СВИШ</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <form class="input-group" action="/main" style="width:67%">
+    <input class="form-control form-control-dark"  style="border-radius:0" placeholder="Поиск студентов" name="search" type="text">
+  </form>
+{% if not current_user %}
+  <div class="navbar-nav">
+
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="/login">Войти</a>
+    </div>
+  </div>{% endif %}
+      <div class="btn-group" style="    margin-right: 25px;
+    margin-left: 25px;">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ current_user.first_name }} {{ current_user.last_name }}
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end">
+<!--        <a><li><button class="dropdown-item" type="button">Профиль</button></li></a>-->
+        <a href="/logout"><li><button class="dropdown-item" type="button">Выход</button></li></a>
+      </ul>
+    </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" style="height:100vh" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link " style="font-weight: 400;
+    color: #000000;{% if page == 'class' %} color: #5d50c6; {% endif %}" aria-current="page" href="/main/class">
+              <span data-feather="home"></span>
+              Класс
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: 400;
+    color: #000000;{% if page == 'student' %} color: #5d50c6; {% endif %}" href="/main/student">
+              <span data-feather="file"></span>
+              Ученики
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " style="font-weight: 400;
+    color: #000000;{% if page == 'prepod' %} color: #5d50c6; {% endif %}"  href="/main/prepod">
+              <span data-feather="shopping-cart"></span>
+              Преподаватели
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " style="font-weight: 400;
+    color: #000000;{% if page == 'lesson' %} color: #5d50c6; {% endif %}" href="/main/lesson">
+              <span data-feather="users"></span>
+              Расписание
+            </a>
+          </li>
+
+        </ul>
+
+
+      </div>
+    </nav>
+
+      {% block content %}
+
+        {% endblock %}
+
+
+    <script src="/static/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+  </body>
+</html>

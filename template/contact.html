@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+    {% block content %}
+        {% load static %}
+
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/static/images/bg_2.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-2 bread">Контакты</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="/">Главная <i class="ion-ios-arrow-forward"></i></a></span> <span>Контакты</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+            {% for c in contact %}
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Адрес</h3>
+	            <p>{{ c.adres }}</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Телефон</h3>
+	            <p><a href="tel://1234567920">{{ c.phone }}</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Электронная почта </h3>
+	            <p><a href="mailto:info@yoursite.com">{{ c.email }}</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="bg-light align-self-stretch box p-4 text-center">
+          		<h3 class="mb-4">Веб сайт</h3>
+	            <p><a href="#">{{ c.site }}</a></p>
+	          </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
+			<div class="container">
+				<div class="row d-flex align-items-stretch no-gutters">
+					<div class="col-md-12 d-flex mb-5" >
+                       {% for c in contact %}
+                <iframe src="{{ c.src_map }}" width="1200" height="450" style="border:0;border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+{% endblock %}

@@ -1,0 +1,6 @@
+bg-tertiary
+	flaticon-reading
+bg-fifth
+	flaticon-books
+bg-quarternary
+	flaticon-diploma
